@@ -16,6 +16,7 @@ function SignUp({ setIsAuth }) {
       cookies.set("firstName", firstName);
       cookies.set("lastName", lastName);
       cookies.set("hashedPassword", hashedPassword);
+      setIsAuth(true);
     });
   };
   return (
