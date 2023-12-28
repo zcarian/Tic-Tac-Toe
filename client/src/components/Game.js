@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Board from "./Board";
+import { Window, MessageList, MessageInput } from "stream-chat-react";
+import "./Chat.css";
 
 export default function Game({ channel }) {
   const [playerJoined, setplayerJoined] = useState(
@@ -15,7 +17,15 @@ export default function Game({ channel }) {
   return (
     <div className="gameContainer">
       <Board result={result} setResult={setResult} />
-      {/* CHAT */}
+      <Window>
+        <MessageList
+          disableDateSeparator
+          closeReactionSelectorOnClick
+          messageActions={[]}
+          hideDeletedMessages
+        />
+        <MessageInput noFiles={true} />
+      </Window>
       {/* LEAVE GAME BUTTON */}
     </div>
   );
