@@ -29,6 +29,11 @@ function Board({ result, setResult }) {
     }
   };
 
+  useEffect(() => {
+    checkIfTie();
+    checkWin();
+  }, [board]);
+
   const checkWin = () => {
     Patterns.forEach((currPattern) => {
       const firstPlayer = board[currPattern[0]];
@@ -40,15 +45,11 @@ function Board({ result, setResult }) {
         }
       });
       if (foundWinningPattern) {
-        alert("Winner", board[currPattern[0]]);
         setResult({ winner: board[currPattern[0]], state: "won" });
       }
     });
   };
-  useEffect(() => {
-    checkWin();
-    checkIfTie();
-  }, [board]);
+
   const checkIfTie = () => {
     let filled = true;
     board.forEach((square) => {
@@ -56,8 +57,8 @@ function Board({ result, setResult }) {
         filled = false;
       }
     });
+
     if (filled) {
-      alert("Game tied");
       setResult({ winner: "none", state: "tie" });
     }
   };
