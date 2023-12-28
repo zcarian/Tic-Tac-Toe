@@ -28,7 +28,7 @@ export default function JoinGame() {
     <>
       {channel ? (
         <Channel channel={channel} Input={CustomInput}>
-          <Game channel={channel} />
+          <Game channel={channel} setChannel={setChannel} />
         </Channel>
       ) : (
         <div className="joinGame">
